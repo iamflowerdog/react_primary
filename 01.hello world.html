@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Mr.YanG</title>
+    <script  type="text/javascript" src="js/react.js"></script>
+    <script  type="text/javascript" src="js/react-dom.js"></script>
+    <script  type="text/javascript" src="js/browser.min.js"></script>
+
+</head>
+<body>
+
+    <div id="box">
+
+    </div>
+
+
+
+<script type="text/babel">
+
+
+    let arr = ['invoker', 'lina', 'apple'];
+
+
+    ReactDOM.render(
+        <div>
+            {
+                arr.map(function (item, index) {
+                    return <div key={index}>Hello, {item}!</div>;
+                })
+            }
+        </div>,
+        document.getElementById('box')
+    )
+
+
+
+
+
+
+</script>
+
+
+
+
+
+</body>
+</html>
