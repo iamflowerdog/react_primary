@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Mr.YanG</title>
+    <style>
+        *{
+            text-align: center;
+            color: orange;
+        }
+    </style>
+    <script  type="text/javascript" src="js/react.js"></script>
+    <script  type="text/javascript" src="js/react-dom.js"></script>
+    <script  type="text/javascript" src="js/browser.min.js"></script>
+
+</head>
+<body>
+
+    <div id="box">
+
+    </div>
+
+    <div id="example">
+
+    </div>
+
+
+
+<script type="text/babel">
+
+
+    /**
+     * 1. 组件标签必须大写
+     * 2. 所有的组件必须有自己的render方法，用于输出组件
+     * 3. 组件类必须只能包含一个顶层标签否则也会报错
+     */
+
+
+    let Hello = React.createClass({
+        render(){
+            return (
+                    <div>
+                        <h1>hello react component!</h1>
+                        <h2>welcome to {this.props.city}!</h2>
+                        <h3>class: {this.props.className}</h3>
+                        <h3>for: {this.props.htmlFor}</h3>
+                    </div>
+            );
+        }
+    });
+
+    ReactDOM.render(
+        <Hello city="Beijing" className="facebook" htmlFor="invoker">
+
+        </Hello>,
+        document.getElementById('box')
+    );
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</script>
+
+
+
+
+
+</body>
+</html>

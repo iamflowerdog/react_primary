@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Mr.YanG</title>
+    <style>
+        *{
+            text-align: center;
+            color: orange;
+        }
+    </style>
+    <script  type="text/javascript" src="js/react.js"></script>
+    <script  type="text/javascript" src="js/react-dom.js"></script>
+    <script  type="text/javascript" src="js/browser.min.js"></script>
+
+</head>
+<body>
+
+    <div id="box">
+
+    </div>
+
+    <div id="example">
+
+    </div>
+
+
+
+<script type="text/babel">
+
+
+    /**
+     * 1. this.props 对象的属性和组件的属性一一对应，但是也有一个例外，
+     * 2. this.props.children 表示组件的所有子节点
+     */
+
+
+    let NodeList = React.createClass({
+        render(){
+            return (
+                <ol>
+                    {
+                        React.Children.map(this.props.children, function (item) {
+                            return <li>{item}</li>;
+                        })
+                    }
+                </ol>
+            )
+        }
+    });
+
+    ReactDOM.render(
+            <NodeList>
+                <span>duplicate entire line fuck !</span>
+                <span>hello</span>
+            </NodeList>,
+        document.getElementById('box')
+    );
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</script>
+
+
+
+
+
+</body>
+</html>
