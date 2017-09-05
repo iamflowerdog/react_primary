@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Mr.YanG</title>
+    <style>
+        *{
+            text-align: center;
+            color: skyblue;
+            font-size: 24px;
+        }
+    </style>
+    <script  type="text/javascript" src="js/react.js"></script>
+    <script  type="text/javascript" src="js/react-dom.js"></script>
+    <script  type="text/javascript" src="js/browser.min.js"></script>
+
+</head>
+<body>
+
+    <div id="box">
+
+    </div>
+
+
+
+<script type="text/babel">
+
+    let MyComponent = React.createClass({
+        handleClick(){
+          //console.log(this.refs.myTextInput.value)
+            this.refs.container.innerHTML = this.refs.myTextInput.value;
+        },
+        render(){
+            return (
+                <div>
+                    <input type="text" ref="myTextInput" value="1"/>
+                    <input type="button" onClick={this.handleClick()} value="获取真实DOM内容"/>
+                    <h1 ref="container"></h1>
+                </div>
+            )
+        }
+    });
+
+    ReactDOM.render(
+            <MyComponent/>,
+        document.getElementById("box")
+    );
+
+
+
+
+
+
+
+</script>
+
+
+
+
+
+</body>
+</html>

@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Mr.YanG</title>
+    <style>
+        *{
+            text-align: center;
+            color: skyblue;
+        }
+    </style>
+    <script  type="text/javascript" src="js/react.js"></script>
+    <script  type="text/javascript" src="js/react-dom.js"></script>
+    <script  type="text/javascript" src="js/browser.min.js"></script>
+
+</head>
+<body>
+
+    <div id="box">
+
+    </div>
+
+
+
+<script type="text/babel">
+
+
+    let Input = React.createClass({
+        getInitialState(){
+            return {
+                value: ''
+            };
+        },
+        handleChange(event){
+          this.setState({
+              value: event.target.value
+          })
+        },
+        render(){
+            let value = this.state.value;
+            return (
+                <div>
+                    <input type="text" value={value} onChange ={this.handleChange}/>
+                    <p>{value}</p>
+                </div>
+            )
+        }
+    });
+
+    ReactDOM.render(
+            <Input/>,
+        document.getElementById("box")
+    );
+
+
+
+
+
+</script>
+
+
+
+
+
+</body>
+</html>

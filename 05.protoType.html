@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Mr.YanG</title>
+    <style>
+        *{
+            text-align: center;
+            color: skyblue;
+        }
+    </style>
+    <script  type="text/javascript" src="js/react.js"></script>
+    <script  type="text/javascript" src="js/react-dom.js"></script>
+    <script  type="text/javascript" src="js/browser.min.js"></script>
+
+</head>
+<body>
+
+    <div id="box">
+
+    </div>
+
+    <div id="example">
+
+    </div>
+
+
+
+<script type="text/babel">
+
+
+    let MyTitle = React.createClass({
+
+        propTypes: { // 用来约束组件实力的属性是否符合要求
+            title: React.PropTypes.string.isRequired
+        },
+        render(){
+            return <h1>hello wuSong, and {this.props.title}!</h1>
+        },
+        getDefaultProps: function () { // 用来设置组件属性的默认值
+            return {
+                title: 'hello default props'
+            };
+        }
+    });
+
+
+    ReactDOM.render(
+        <div>
+            <MyTitle />
+            {/*
+                <MyTitle title={123}/> // ❌错误写法，因为组件规定 React.PropTypes.string.isRequired
+            */}
+            <MyTitle title={'123'}/>
+        </div>,
+        document.getElementById('box')
+    );
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</script>
+
+
+
+
+
+</body>
+</html>

@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Mr.YanG</title>
+    <style>
+        *{
+            text-align: center;
+        }
+    </style>
+    <script  type="text/javascript" src="js/react.js"></script>
+    <script  type="text/javascript" src="js/react-dom.js"></script>
+    <script  type="text/javascript" src="js/browser.min.js"></script>
+
+</head>
+<body>
+
+    <div id="box">
+
+    </div>
+
+
+
+<script type="text/babel">
+
+    /**
+     *  ## this.props 和 this.state 区别？
+     *  1. 二者都可以描述组件的特性
+     *  2. this.props 写在组件实例标签的属性上面，一般用于保存一些固定的特性值，不再更改
+     *  3. this.state 写在组件 getInitialState 方法的返回值里面，保存着用户互动经常产生变化的特性
+     */
+
+    let LikeButton = React.createClass({
+        getInitialState(){
+            return {
+                liked: false
+            }
+        },
+        handleClick(){
+            this.setState({
+                liked: !this.state.liked
+            })
+        },
+        render(){
+            let text = this.state.liked ? 'love' : 'hate';
+            return (
+                <h1 onClick={this.handleClick}>
+                    you {text} me ? // click me to change! <br/>
+                    ha ha!
+                </h1>
+            )
+        }
+    });
+
+    ReactDOM.render(
+            <LikeButton/>,
+        document.getElementById("box")
+    );
+
+
+
+
+
+
+</script>
+
+
+
+
+
+</body>
+</html>
