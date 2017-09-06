@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Mr.YanG</title>
+    <style>
+        *{
+            text-align: center;
+            color: skyblue;
+        }
+    </style>
+    <script  type="text/javascript" src="js/react.js"></script>
+    <script  type="text/javascript" src="js/react-dom.js"></script>
+    <script  type="text/javascript" src="js/browser.min.js"></script>
+
+</head>
+<body>
+
+    <div id="box">
+
+    </div>
+
+
+
+<script type="text/babel">
+
+
+    /**
+     * #### 动态显示表单输入数据要点
+     *
+     * 1. 表单输入过程中，会触发 onChange 事件 ，
+     * 2. 事件对象会自动输入回掉函数的形参里面 `event`
+     *
+     *      ```
+     *         event: 触发事件
+     *         dispatchConfig: {…}, _targetInst: ReactDOMComponent,
+     *         nativeEvent: InputEvent,
+     *         type: "change", target: input, …
+     *
+     *      ```
+     * 3. 通过 event.target 获取触发事件的元素, event.target.value 获取元素的输入值
+     *
+     *      `event.target = <input type="text">`
+     *      `event.target.value = 表单输入值`
+     */
+
+
+    let MyInput = React.createClass({
+        getInitialState(){
+          return {
+              value: 'hello world'
+          }
+        },
+        handleChange(event){
+            this.setState({
+                value: event.target.value
+            });
+            console.log(event.nativeEvent)
+        },
+        render(){
+            let value = this.state.value;
+            return (
+                <div>
+                    <input type="text" ref="myInput" onChange={this.handleChange}/>
+                    <h1>{value}</h1>
+                </div>
+            )
+        }
+    });
+
+    ReactDOM.render(
+            <MyInput/>,
+        document.getElementById("box")
+    );
+
+
+
+
+
+
+
+
+</script>
+
+
+
+
+
+</body>
+</html>

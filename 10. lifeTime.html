@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Mr.YanG</title>
+    <style>
+        *{
+            text-align: center;
+            color: skyblue;
+        }
+    </style>
+    <script  type="text/javascript" src="js/react.js"></script>
+    <script  type="text/javascript" src="js/react-dom.js"></script>
+    <script  type="text/javascript" src="js/browser.min.js"></script>
+
+</head>
+<body>
+
+    <div id="box">
+
+    </div>
+
+
+
+<script type="text/babel">
+
+
+
+    var Hello = React.createClass({
+        getInitialState: function () {
+            return {
+                opacity: 1.0
+            };
+        },
+
+        componentDidMount: function () {
+            this.timer = setInterval(function () {
+                var opacity = this.state.opacity;
+                opacity -= .05;
+                if (opacity < 0.1) {
+                    opacity = 1.0;
+                }
+                this.setState({
+                    opacity: opacity
+                });
+            }.bind(this), 100);
+        },
+
+        render: function () {
+            return (
+                    <div style={{opacity: this.state.opacity}}>
+                        <h1>Hello {this.props.name}</h1>
+                    </div>
+            );
+        }
+    });
+
+    ReactDOM.render(
+            <Hello name="world"/>,
+        document.body
+    );
+
+
+
+
+
+
+</script>
+
+
+
+
+
+</body>
+</html>

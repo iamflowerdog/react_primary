@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Mr.YanG</title>
+    <style>
+        *{
+            text-align: center;
+            color: skyblue;
+        }
+    </style>
+    <script  type="text/javascript" src="js/react.js"></script>
+    <script  type="text/javascript" src="js/react-dom.js"></script>
+    <script  type="text/javascript" src="js/browser.min.js"></script>
+
+</head>
+<body>
+
+<div id="box">
+
+</div>
+
+
+
+<script type="text/babel">
+
+    /**
+     *   #### 组件生命周期的三种状态：
+     *    1. Mounting : 已经插入真实DOM
+     *    2. Updating: 正在被重新渲染
+     *    3. Unmounting: 已经移除真实DOM
+     *
+     *   #### 三种状态 五种处理函数
+     *    * componentWillMount()
+     *    * componentDidMount()
+     *    * componentWillUpdate(object nextProps, object nextState)
+     *    * componentDidUpdate(object prevProps, object prevState)
+     *    * componentWillUnmount()
+     *
+     *   #### 两种特殊状态的处理函数
+     *    * componentWillReceiveProps(object nextProps)：已加载组件收到新的参数时调用
+     *    * shouldComponentUpdate(object nextProps, object nextState)：组件判断是否重新渲染时调用
+     *
+     *   #### 重新渲染注意事项
+     *    * 必须在页面挂载后，才能更改样式，否则看不到变化
+     *    * 在 componentDidMount 中输出 只会打印一次
+     *    * 在 组件中 设置定时器， 记得给定时器传的回掉函数指定 this 为 当前组件实例 否则 this 指向 window
+     *    * 要更改初始化数据的value值，记得先给value值保存，保存后的变量值做动态修改，然后调用setState修改
+     *    * 另外组件渲染时候 样式 放在大括号里面 不应该写成字符串
+     *
+     *
+     */
+
+    let Shine = React.createClass({
+        getInitialState(){
+          return {
+              opacity: 1
+          }
+        },
+        componentDidMount: function(){
+            console.log(this);
+            let opacity = this.state.opacity;
+
+            setInterval(function () {
+                opacity -= 0.05;
+                if (opacity < 0.1){
+                    opacity = 1
+                }
+              this.setState({
+                opacity: opacity
+              })
+          }.bind(this), 200)
+        },
+        render(){
+            let opacity = this.state.opacity;
+            // console.log(opacity);
+            return (
+                    <div style={{opacity: opacity}}>
+                        <h1>hello {this.props.name}!</h1>
+                    </div>
+            );
+        }
+    });
+
+    ReactDOM.render(
+            <Shine name="shine"/>,
+        document.getElementById("box")
+    );
+
+
+
+
+
+
+</script>
+
+
+
+
+
+</body>
+</html>
