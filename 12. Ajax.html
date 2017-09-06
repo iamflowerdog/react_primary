@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Mr.YanG</title>
+    <style>
+        *{
+            text-align: center;
+            color: rebeccapurple;
+        }
+        img{
+            border-radius: 50%;
+        }
+    </style>
+    <script  type="text/javascript" src="js/react.js"></script>
+    <script  type="text/javascript" src="js/react-dom.js"></script>
+    <script  type="text/javascript" src="js/browser.min.js"></script>
+    <script  type="text/javascript" src="js/jquery.min.js"></script>
+
+</head>
+<body>
+
+<div id="box">
+
+</div>
+
+
+
+<script type="text/babel">
+
+
+    /**
+     * 1. 组件的数据来源，通常是Ajax请求从服务器获取；
+     * 2. 豆瓣官方示例api https://api.douban.com/v2/book/1220562 / 不支持跨域
+     * 3. gist 官方api https://api.github.com/users/octocat/gists
+     * 4.
+     *
+     *
+     *
+     *
+     */
+
+
+
+
+    let UserGist = React.createClass({
+        getInitialState(){
+            return {
+                bookUrl: '',
+                author: '海哥',
+                imgUrl: ''
+            }
+        },
+        componentDidMount(){
+            let requestUrl = this.props.source;
+            $.get(requestUrl, function (data) {
+                // isMounted: Checks whether or not this composite component is mounted.
+                if (this.isMounted()){
+                    this.setState({
+                        bookUrl: data[0].html_url,
+                        author: data[0].owner.login,
+                        imgUrl: data[0].owner.avatar_url
+                    });
+                    console.log(data[0].owner.avatar_url);
+                }
+
+            }.bind(this));
+        },
+        render(){
+            return (
+                <div ref="gist">
+                    这本书的作者是：{this.state.author}；<br/>
+                    点击访问我：<a href= {this.state.bookUrl} target="_blank">click</a> <br/>
+                    我的头像是：<img src={this.state.imgUrl} width="50" height="50"/>
+                </div>
+            )
+        }
+    });
+
+    ReactDOM.render(
+            <UserGist source="https://api.github.com/users/octocat/gists" />,
+        document.getElementById("box")
+    );
+
+
+
+
+</script>
+
+
+
+
+
+</body>
+</html>

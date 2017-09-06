@@ -60,7 +60,7 @@
         componentDidMount: function(){
             console.log(this);
             let opacity = this.state.opacity;
-
+            console.log(opacity);
             setInterval(function () {
                 opacity -= 0.05;
                 if (opacity < 0.1){
@@ -71,6 +71,11 @@
               })
           }.bind(this), 200)
         },
+
+        componentWillReceiveProps: function () {
+            console.log(this.state.opacity);
+        },
+
         render(){
             let opacity = this.state.opacity;
             // console.log(opacity);
