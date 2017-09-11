@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Mr.YanG</title>
+    <style>
+        *{
+            text-align: center;
+            color: skyblue;
+        }
+    </style>
+    <script  type="text/javascript" src="js/react.js"></script>
+    <script  type="text/javascript" src="js/react-dom.js"></script>
+    <script  type="text/javascript" src="js/browser.min.js"></script>
+
+</head>
+<body>
+
+<div id="box">
+
+</div>
+
+
+
+<script type="text/babel">
+
+    /**
+     * 1. 用户在表单的输入内容，属于用户跟组件的互动，所以不能用 this.props 读取
+     * 2.
+     */
+
+
+    let Input = React.createClass({
+        getInitialState(){
+            return {
+                value: 'ff',
+                text: '',
+                radioValue: 'male'
+            }
+        },
+        handleChange(event){
+            this.setState({
+              value: event.target.value,
+            });
+        },
+        textInput(event){
+            this.setState({
+                text: event.target.value
+            })
+        },
+        radioChange(event){
+            console.log(1);
+            this.setState({
+                radioValue: event.target.value
+            })
+        },
+        render(){
+            return (
+                <div>
+                    <input type="text" onChange={this.handleChange}/>
+                    <h1>{this.state.value}</h1>
+                    <textarea name="myArea" cols="30" rows="10" onChange={this.textInput}></textarea>
+                    <h2>{this.state.text}</h2>
+                    男性：
+                    <input type="radio" name="sex" value="male" defaultChecked="checked" onChange={this.radioChange}/>
+                    <br/>
+                    女性：
+                    <input type="radio" name="sex" value="female" onChange={this.radioChange}/>
+                    <br/>
+                    现在选择的是： <h1>{this.state.radioValue}</h1>
+
+                </div>
+            )
+        }
+    });
+
+    ReactDOM.render(
+            <Input/>,
+        document.getElementById("box")
+    );
+
+
+
+
+</script>
+
+
+
+
+
+</body>
+</html>
