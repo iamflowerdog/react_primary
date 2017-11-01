@@ -73,8 +73,57 @@
  * 要更改初始化数据的value值，记得先给value值保存，保存后的变量值做动态修改，然后调用setState修改
  * 另外组件渲染时候 样式 放在大括号里面 不应该写成字符串
 
-#### 
+#### react 中的ref属性 Refs and the DOM
+
+* When to Use Refs?
+    1. Managing focus, text selection, or media playback.
+    2. Triggering imperative animations.
+    3. Integrating with third-party DOM libraries.
+   
+* Don’t Overuse Refs
+    1. You should more often use state to change dataFlow
+
+* Adding a Ref to a DOM Element
+    1. React supports a special attribute that you can attach to any component. The ref attribute takes a callback function,
+       and the callback will be executed immediately after the component is mounted or unmounted.
+       
+    2. When the ref attribute is used on an HTML element, the ref callback receives the underlying DOM element as its argument. 
+        For example, this code uses the ref callback to store a reference to a DOM node:
  
+ ```
+ 
+ 
+     class CustomTextInput extends React.Component {
+       constructor(props) {
+         super(props);
+         this.focusTextInput = this.focusTextInput.bind(this);
+       }
+     
+       focusTextInput() {
+         // Explicitly focus the text input using the raw DOM API
+         this.textInput.focus();
+       }
+     
+       render() {
+         // Use the `ref` callback to store a reference to the text input DOM
+         // element in an instance field (for example, this.textInput).
+         return (
+           <div>
+             <input
+               type="text"
+               ref={(input) => { this.textInput = input; }} />
+     
+             <input
+               type="button"
+               value="Focus the text input"
+               onClick={this.focusTextInput}
+             />
+           </div>
+         );
+       }
+     }
+ 
+ ```
 
  
  
